@@ -64,7 +64,14 @@
 }
 
 .omm-pill3d__half--top {
-  clip-path: inset(0 0 0 0 round 999px 999px 0 0);
+  clip-path: inset(0 0 0 0 round 999px 999px 4px 4px);
+}
+
+.omm-pill3d__half--bot {
+  clip-path: inset(0 0 0 0 round 4px 4px 999px 999px);
+}
+
+.omm-pill3d__half--top {
   top: 0;
   border-top-left-radius: 999px;
   border-top-right-radius: 999px;
@@ -118,7 +125,6 @@
 }
 
 .omm-pill3d__half--bot {
-  clip-path: inset(0 0 0 0 round 0 0 999px 999px);
   bottom: 0;
   border-bottom-left-radius: 999px;
   border-bottom-right-radius: 999px;
