@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Omme — Tu cabello tiene solución</title>
+<link rel="icon" href="/assets/omme-logo-iso.png">
+<link rel="stylesheet" href="/colors_and_type.css">
+<link rel="stylesheet" href="/ui_kits/hair-loss-landing/styles.css">
+<link rel="stylesheet" href="/ui_kits/hair-loss-landing/pill3d.css">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<style>
+  html, body { margin: 0; padding: 0; background: var(--cream-100); }
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="/ui_kits/hair-loss-landing/Nav.jsx"></script>
+<script type="text/babel" src="/ui_kits/hair-loss-landing/Pill3D.jsx"></script>
+<script type="text/babel" src="/ui_kits/hair-loss-landing/Hero.jsx"></script>
+<script type="text/babel" src="/ui_kits/hair-loss-landing/Flow.jsx"></script>
+<script type="text/babel" src="/ui_kits/hair-loss-landing/Protocol.jsx"></script>
+<script type="text/babel" src="/ui_kits/hair-loss-landing/WhyPricing.jsx"></script>
+<script type="text/babel" src="/ui_kits/hair-loss-landing/Closing.jsx"></script>
+
+<script type="text/babel">
+function App() {
+  return (
+    <React.Fragment>
+      <Nav />
+      <Hero />
+      <ProblemBar />
+      <HowItWorks />
+      <Protocol />
+      <WhyOmme />
+      <Pricing />
+      <Testimonials />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
+    </React.Fragment>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

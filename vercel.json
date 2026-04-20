@@ -1,9 +1,6 @@
 {
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/ui_kits/hair-loss-landing/",
-      "permanent": false
-    }
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
   ]
 }
