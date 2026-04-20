@@ -1,0 +1,232 @@
+/* Omme — Hyper-realistic matte white pharmaceutical capsule
+   References: stock pharma photography — soft diffuse lighting, matte surface,
+   gentle key light from upper-left, slight ambient occlusion, clean midline groove.
+   NO gloss, NO text, NO gradients that look plasticky.
+*/
+
+.omm-pill3d {
+  --mx: 0; --my: 0;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+}
+.omm-pill3d.is-compact { max-width: 180px; aspect-ratio: 1 / 1.4; }
+
+.omm-pill3d__scene {
+  position: relative;
+  width: 44%; height: 90%;
+  transform-style: preserve-3d;
+}
+
+/* Ambient halo with more presence */
+.omm-pill3d__halo {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 220%; height: 160%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(ellipse 55% 45% at 35% 40%,
+      rgba(255,255,255,0.12), transparent 60%),
+    radial-gradient(closest-side, rgba(212,242,51,0.06), transparent 65%);
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+/* Photographic contact shadow */
+.omm-pill3d__shadow {
+  position: absolute;
+  left: 50%; bottom: -8%;
+  width: 80%; height: 12%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center,
+    rgba(13,13,13,0.55) 0%,
+    rgba(13,13,13,0.30) 25%,
+    rgba(13,13,13,0.12) 50%,
+    transparent 72%);
+  filter: blur(22px);
+  animation: ommShadowBob 6s ease-in-out infinite;
+}
+
+/* The capsule */
+.omm-pill3d__capsule {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transform:
+    rotateX(calc(-8deg + var(--my) * -6deg))
+    rotateZ(-10deg)
+    rotateY(calc(-14deg + var(--mx) * 10deg));
+  animation: ommFloat 6s ease-in-out infinite;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1);
+}
+
+/* Two halves share matte base. Warm ambient at 4400K key, cool shadow fill. */
+.omm-pill3d__half {
+  position: absolute;
+  left: 0; right: 0;
+  height: 52%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+/* TOP HALF */
+.omm-pill3d__half--top {
+  top: 0;
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  background:
+    radial-gradient(ellipse 60% 70% at 28% 18%,
+      rgba(255,255,255,0.95) 0%,
+      rgba(255,255,255,0.6) 20%,
+      rgba(245,244,240,0.0) 55%),
+    radial-gradient(ellipse 90% 100% at 50% 0%,
+      #FDFCF9 0%,
+      #F2F0EB 30%,
+      #D9D7D1 65%,
+      #B8B5AE 85%,
+      #96938C 100%);
+  box-shadow:
+    inset -18px -28px 55px rgba(80,78,70,0.65),
+    inset 22px 28px 60px rgba(255,255,255,0.7),
+    inset 0 -18px 28px rgba(80,78,70,0.38),
+    inset 4px 4px 12px rgba(255,255,255,0.9);
+}
+
+/* Bottom half — same material, lighting wraps around bottom curve */
+.omm-pill3d__half--bot {
+  bottom: 0;
+  border-bottom-left-radius: 999px;
+  border-bottom-right-radius: 999px;
+  background:
+    radial-gradient(ellipse 55% 60% at 70% 88%,
+      rgba(255,255,255,0.5) 0%,
+      rgba(255,255,255,0.15) 35%,
+      transparent 60%),
+    radial-gradient(ellipse 90% 100% at 50% 100%,
+      #FAF9F5 0%,
+      #EDECEA 30%,
+      #D2D0CA 65%,
+      #B0ADA6 85%,
+      #929089 100%);
+  box-shadow:
+    inset -18px 28px 55px rgba(80,78,70,0.65),
+    inset 22px -28px 60px rgba(255,255,255,0.7),
+    inset 0 18px 28px rgba(80,78,70,0.38),
+    inset 4px -4px 12px rgba(255,255,255,0.85);
+}
+
+/* Rim light on the edges of the capsule */
+.omm-pill3d__half::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,0.22) 0%,
+      transparent 18%,
+      transparent 82%,
+      rgba(255,255,255,0.12) 100%);
+  pointer-events: none;
+}
+
+/* Specular highlight — the hard bright spot that sells the 3D render */
+.omm-pill3d__half--top::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 18%;
+  width: 38%;
+  height: 28%;
+  background: radial-gradient(ellipse,
+    rgba(255,255,255,0.88) 0%,
+    rgba(255,255,255,0.45) 35%,
+    transparent 70%);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.omm-pill3d__half--bot::before {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  right: 22%;
+  width: 25%;
+  height: 18%;
+  background: radial-gradient(ellipse,
+    rgba(255,255,255,0.55) 0%,
+    rgba(255,255,255,0.2) 45%,
+    transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+/* Seam — deeper recessed groove with reflection */
+.omm-pill3d__seam {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 4%;
+  transform: translateY(-50%);
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.5) 0%,
+      rgba(140,138,130,0.0) 15%,
+      rgba(55,53,47,0.65) 40%,
+      rgba(40,38,33,0.75) 50%,
+      rgba(55,53,47,0.65) 60%,
+      rgba(140,138,130,0.0) 85%,
+      rgba(255,255,255,0.4) 100%);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.55),
+    0 -2px 0 rgba(255,255,255,0.45);
+  pointer-events: none;
+}
+
+/* Elements we keep hidden (removed text, but selectors referenced in JSX) */
+.omm-pill3d__gloss,
+.omm-pill3d__rim,
+.omm-pill3d__stamp,
+.omm-pill3d__wordmark,
+.omm-pill3d__rule,
+.omm-pill3d__code,
+.omm-pill3d__glow-ring { display: none; }
+
+/* Caption */
+.omm-pill3d__meta {
+  position: absolute; bottom: 4px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-500);
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(242, 242, 240, 0.75);
+  padding: 5px 10px; border-radius: 999px;
+  border: 1px solid var(--cream-300);
+  backdrop-filter: blur(6px);
+}
+.omm-pill3d__dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--accent-lime);
+  box-shadow: 0 0 6px rgba(212,242,51,0.7);
+}
+
+@keyframes ommFloat {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -14px; }
+}
+@keyframes ommShadowBob {
+  0%, 100% { transform: translateX(-50%) scale(1);    opacity: 0.9; }
+  50%      { transform: translateX(-50%) scale(0.85); opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .omm-pill3d__capsule, .omm-pill3d__shadow { animation: none !important; }
+}

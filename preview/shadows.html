@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--cream-100); }
+  .wrap { padding: 34px 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; font-family: var(--font-sans); }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .block { width: 110px; height: 70px; background: var(--cream-50); border: 1px solid var(--cream-300); border-radius: 14px; }
+  .sm  { box-shadow: 0 2px 8px rgba(13,13,13,.05), 0 1px 2px rgba(13,13,13,.04); }
+  .md  { box-shadow: 0 10px 30px -10px rgba(13,13,13,.12), 0 2px 6px rgba(13,13,13,.04); }
+  .lg  { box-shadow: 0 30px 60px -20px rgba(13,13,13,.18), 0 10px 20px -10px rgba(13,13,13,.08); }
+  .cap { box-shadow: 0 30px 60px -20px rgba(217,154,78,.45), 0 10px 20px -15px rgba(13,13,13,.12); }
+  .name { font-size: 11px; color: var(--ink-1000); font-weight: 600; }
+  .tok { font-size: 10px; color: var(--ink-500); font-family: var(--font-mono); }
+</style>
+</head><body>
+<div class="wrap">
+  <div class="cell"><div class="block sm"></div><div class="name">Shadow SM</div><div class="tok">card · rest</div></div>
+  <div class="cell"><div class="block md"></div><div class="name">Shadow MD</div><div class="tok">card · hover</div></div>
+  <div class="cell"><div class="block lg"></div><div class="name">Shadow LG</div><div class="tok">modal · overlay</div></div>
+  <div class="cell"><div class="block cap"></div><div class="name">Capsule glow</div><div class="tok">amber · hero only</div></div>
+</div>
+</body></html>

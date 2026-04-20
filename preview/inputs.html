@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--cream-100); }
+  .wrap { padding: 28px 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-family: var(--font-sans); }
+  label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-500); display: block; margin-bottom: 6px; }
+  .input { width: 100%; box-sizing: border-box; font-family: inherit; font-size: 15px; padding: 14px 16px; background: var(--cream-50); border: 1px solid var(--cream-300); border-radius: 12px; color: var(--ink-1000); outline: none; transition: border-color .2s; }
+  .input::placeholder { color: var(--ink-300); }
+  .input:focus { border-color: var(--ink-1000); }
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--cream-300); background: var(--cream-50); color: var(--ink-1000); margin-right: 6px; margin-top: 8px; }
+  .pill.on { background: var(--ink-1000); color: var(--cream-100); border-color: var(--ink-1000); }
+  .group { }
+</style>
+</head><body>
+<div class="wrap">
+  <div class="group">
+    <label>Correo</label>
+    <input class="input" placeholder="tu@correo.com" value="manuel@correo.com">
+  </div>
+  <div class="group">
+    <label>Edad</label>
+    <div>
+      <span class="pill">18–24</span>
+      <span class="pill on">25–34</span>
+      <span class="pill">35–44</span>
+      <span class="pill">45+</span>
+    </div>
+  </div>
+</div>
+</body></html>
